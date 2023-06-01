@@ -1,0 +1,12 @@
+<p>
+  Look up posts in r/aww by title
+  <input type="text" [(ngModel)]="searchTerm"/>
+</p>
+<button (click)="searchReddit()">Search</button>
+
+<div *ngFor="let s of searchResults; let i = index">
+  <p *ngIf="i<10">Title: {{s.data.title}}</p>
+  <button *ngIf="i<10" (click)="getPostDetails(s.data.id)">See details for {{s.data.title}}</button>
+</div>
+
+<app-subreddit-details [displayPost]="selectedPost"></app-subreddit-details>
